@@ -33,7 +33,7 @@ public class SampleFragment extends Fragment {
         Calendar endDate = Calendar.getInstance();
         endDate.add(Calendar.MONTH, 1);
 
-        horizontalCalendar = new HorizontalCalendar.Builder(rootView, R.id.calendarView)
+        horizontalCalendar = new HorizontalCalendar.Builder(rootView, rootView.findViewById(R.id.calendarView))
                 .range(startDate, endDate)
                 .datesNumberOnScreen(5)
                 .configure()

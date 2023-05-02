@@ -44,9 +44,9 @@ public class MainActivity extends AppCompatActivity {
         // Default Date set to Today.
         final Calendar defaultSelectedDate = Calendar.getInstance();
 
-        horizontalCalendar = new HorizontalCalendar.Builder(this, R.id.calendarView)
+        horizontalCalendar = new HorizontalCalendar.Builder(this, findViewById(R.id.calendarView))
                 .range(startDate, endDate)
-                .datesNumberOnScreen(5)
+                .datesNumberOnScreen(7)
                 .configure()
                     .formatTopText("MMM")
                     .formatMiddleText("dd")
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                     .colorTextMiddle(Color.LTGRAY, Color.parseColor("#ffd54f"))
                 .end()
                 .defaultSelectedDate(defaultSelectedDate)
-                .addEvents(new CalendarEventsPredicate() {
+                /*.addEvents(new CalendarEventsPredicate() {
 
                     Random rnd = new Random();
                     @Override
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
                         return events;
                     }
-                })
+                })*/
                 .build();
 
         Log.i("Default Date", DateFormat.format("EEE, MMM d, yyyy", defaultSelectedDate).toString());

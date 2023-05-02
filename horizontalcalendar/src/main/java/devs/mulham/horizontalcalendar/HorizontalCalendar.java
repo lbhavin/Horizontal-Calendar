@@ -48,7 +48,7 @@ public final class HorizontalCalendar {
     // Interface events
     HorizontalCalendarListener calendarListener;
 
-    private final int calendarId;
+//    private final int calendarId;
     /* Format, Colors & Font Sizes*/
     private final CalendarItemStyle defaultStyle;
     private final CalendarItemStyle selectedItemStyle;
@@ -60,7 +60,7 @@ public final class HorizontalCalendar {
      */
     HorizontalCalendar(Builder builder, HorizontalCalendarConfig config, CalendarItemStyle defaultStyle, CalendarItemStyle selectedItemStyle) {
         this.numberOfDatesOnScreen = builder.numberOfDatesOnScreen;
-        this.calendarId = builder.viewId;
+        this.calendarView = builder.viewId;
         this.startDate = builder.startDate;
         this.endDate = builder.endDate;
         this.config = config;
@@ -71,7 +71,7 @@ public final class HorizontalCalendar {
 
     /* Init Calendar View */
     void init(View rootView, final Calendar defaultSelectedDate, HorizontalCalendarPredicate disablePredicate, CalendarEventsPredicate eventsPredicate) {
-        calendarView = rootView.findViewById(calendarId);
+//        calendarView = rootView.findViewById(calendarId);
         calendarView.setHasFixedSize(true);
         calendarView.setHorizontalScrollBarEnabled(false);
         calendarView.applyConfigFromLayout(this);
@@ -311,7 +311,7 @@ public final class HorizontalCalendar {
 
     public static class Builder {
 
-        final int viewId;
+        final HorizontalCalendarView viewId;
         final View rootView;
 
         // Start & End Dates
@@ -333,7 +333,7 @@ public final class HorizontalCalendar {
          * @param rootView pass the rootView for the Fragment where HorizontalCalendar is attached
          * @param viewId   the id specified for HorizontalCalendarView in your layout
          */
-        public Builder(View rootView, int viewId) {
+        public Builder(View rootView, HorizontalCalendarView viewId) {
             this.rootView = rootView;
             this.viewId = viewId;
         }
@@ -342,7 +342,7 @@ public final class HorizontalCalendar {
          * @param activity pass the activity where HorizontalCalendar is attached
          * @param viewId   the id specified for HorizontalCalendarView in your layout
          */
-        public Builder(Activity activity, int viewId) {
+        public Builder(Activity activity, HorizontalCalendarView viewId) {
             this.rootView = activity.getWindow().getDecorView();
             this.viewId = viewId;
         }
