@@ -60,7 +60,7 @@ public final class HorizontalCalendar {
      */
     HorizontalCalendar(Builder builder, HorizontalCalendarConfig config, CalendarItemStyle defaultStyle, CalendarItemStyle selectedItemStyle) {
         this.numberOfDatesOnScreen = builder.numberOfDatesOnScreen;
-        this.calendarView = builder.viewId;
+//        this.calendarView = builder.viewId;
         this.startDate = builder.startDate;
         this.endDate = builder.endDate;
         this.config = config;
@@ -70,8 +70,9 @@ public final class HorizontalCalendar {
     }
 
     /* Init Calendar View */
-    void init(View rootView, final Calendar defaultSelectedDate, HorizontalCalendarPredicate disablePredicate, CalendarEventsPredicate eventsPredicate) {
+    void init(HorizontalCalendarView rootView, final Calendar defaultSelectedDate, HorizontalCalendarPredicate disablePredicate, CalendarEventsPredicate eventsPredicate) {
 //        calendarView = rootView.findViewById(calendarId);
+        calendarView = rootView;
         calendarView.setHasFixedSize(true);
         calendarView.setHorizontalScrollBarEnabled(false);
         calendarView.applyConfigFromLayout(this);
@@ -418,7 +419,7 @@ public final class HorizontalCalendar {
             HorizontalCalendarConfig config = configBuilder.createConfig();
 
             HorizontalCalendar horizontalCalendar = new HorizontalCalendar(this, config, defaultStyle, selectedItemStyle);
-            horizontalCalendar.init(rootView, defaultSelectedDate, disablePredicate, eventsPredicate);
+            horizontalCalendar.init(viewId, defaultSelectedDate, disablePredicate, eventsPredicate);
             return horizontalCalendar;
         }
     }

@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         horizontalCalendar = new HorizontalCalendar.Builder(this, findViewById(R.id.calendarView))
                 .range(startDate, endDate)
                 .datesNumberOnScreen(7)
-                .configure()
+                /*.configure()
                     .formatTopText("MMM")
                     .formatMiddleText("dd")
                     .formatBottomText("EEE")
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                     .colorTextMiddle(Color.LTGRAY, Color.parseColor("#ffd54f"))
                 .end()
                 .defaultSelectedDate(defaultSelectedDate)
-                /*.addEvents(new CalendarEventsPredicate() {
+                .addEvents(new CalendarEventsPredicate() {
 
                     Random rnd = new Random();
                     @Override
