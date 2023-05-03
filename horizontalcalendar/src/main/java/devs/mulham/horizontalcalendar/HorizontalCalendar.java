@@ -91,11 +91,10 @@ public final class HorizontalCalendar {
         } else {
             mCalendarAdapter = new DaysAdapter(this, startDate, endDate, disablePredicate, eventsPredicate);
         }
-
+        mCalendarAdapter.setSelectedPosition(positionOfDate(defaultSelectedDate));
         calendarView.setAdapter(mCalendarAdapter);
         calendarView.setLayoutManager(new HorizontalLayoutManager(calendarView.getContext(), false));
         calendarView.addOnScrollListener(new HorizontalCalendarScrollListener());
-        mCalendarAdapter.setSelectedPosition(positionOfDate(defaultSelectedDate));
 //        post(new Runnable() {
 //            @Override
 //            public void run() {

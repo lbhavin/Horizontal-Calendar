@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         /* start 2 months ago from now */
         Calendar startDate = Calendar.getInstance();
-        startDate.add(Calendar.MONTH, -2);
+//        startDate.add(Calendar.MONTH, -2);
 
         /* end after 2 months from now */
         Calendar endDate = Calendar.getInstance();

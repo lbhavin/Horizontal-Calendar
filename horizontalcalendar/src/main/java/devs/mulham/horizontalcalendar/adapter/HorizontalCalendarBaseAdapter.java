@@ -46,6 +46,7 @@ public abstract class HorizontalCalendarBaseAdapter<VH extends DateViewHolder, T
         this.startDate = startDate;
         if (disablePredicate != null) {
             this.disabledItemStyle = disablePredicate.style();
+            this.disabledItemStyle.setBackground(horizontalCalendar.getDefaultStyle().getBackground());
         }
         this.eventsPredicate = eventsPredicate;
 
@@ -117,7 +118,7 @@ public abstract class HorizontalCalendarBaseAdapter<VH extends DateViewHolder, T
             viewHolder.itemView.setEnabled(!isDisabled);
             if (isDisabled && (disabledItemStyle != null)) {
                 applyStyle(viewHolder, disabledItemStyle);
-                viewHolder.selectionView.setVisibility(View.INVISIBLE);
+                viewHolder.selectionView.setVisibility((horizontalCalendar.getConfig().isShowBottomIndicator() ? View.VISIBLE :View.GONE));
                 return;
             }
         }

@@ -39,10 +39,7 @@
             app:fontBottomText="@string/font_pacifico_regular"
             app:fontTopText="@string/font_pacifico_regular"
             app:fontMiddleText="@string/font_sourcesans_pro_semibold"
-            app:sizeMiddleText="25sp"
-            app:colorBottomTextSelected="@color/colorPrimaryDark"
-            app:colorBottomText="@color/colorPrimaryDark"
-            app:textColorSelected="#C31010" />
+            app:sizeMiddleText="25sp" />
     </LinearLayout>
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
