@@ -3,6 +3,7 @@ package devs.mulham.raee.sample;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.format.DateFormat;
@@ -12,14 +13,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
-import java.util.Random;
 
 import devs.mulham.horizontalcalendar.HorizontalCalendar;
-import devs.mulham.horizontalcalendar.model.CalendarEvent;
-import devs.mulham.horizontalcalendar.utils.CalendarEventsPredicate;
 import devs.mulham.horizontalcalendar.utils.HorizontalCalendarListener;
 
 public class MainActivity extends AppCompatActivity {
@@ -48,13 +44,16 @@ public class MainActivity extends AppCompatActivity {
                 .range(startDate, endDate)
                 .datesNumberOnScreen(7)
                 .configure()
-                    .formatTopText("MMM")
-                    .formatMiddleText("dd")
-                    .formatBottomText("EEE")
-                    .showTopText(true)
-                    .showBottomText(true)
-                    .textColor(Color.LTGRAY, Color.WHITE)
-                    .colorTextMiddle(Color.LTGRAY, Color.parseColor("#ffd54f"))
+                .formatTopText("EEE")
+                .formatMiddleText("dd")
+                .formatBottomText("MMM")
+                .showTopText(true)
+                .showBottomText(true)
+                .showBottomIndicator(false)
+                .dateBackground(ContextCompat.getDrawable(this, R.drawable.sample_background))
+                .selectedDateBackground(ContextCompat.getDrawable(this, R.drawable.sample_selected_background))
+                .textColor(Color.parseColor("#14212A"), Color.WHITE)
+                .colorTextMiddle(Color.parseColor("#14212A"), Color.WHITE)
                 .end()
                 .defaultSelectedDate(defaultSelectedDate)
                 .build();
