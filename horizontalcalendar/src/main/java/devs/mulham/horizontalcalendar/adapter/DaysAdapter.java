@@ -32,7 +32,8 @@ public class DaysAdapter extends HorizontalCalendarBaseAdapter<DateViewHolder, C
     @Override
     protected DateViewHolder createViewHolder(View itemView, int cellWidth) {
         final DateViewHolder holder = new DateViewHolder(itemView);
-        holder.layoutContent.setMinimumWidth(cellWidth);
+//        holder.layoutMain.setMinimumWidth(cellWidth);
+        holder.layoutMain.getLayoutParams().width = cellWidth;
 
         return holder;
     }
@@ -49,10 +50,12 @@ public class DaysAdapter extends HorizontalCalendarBaseAdapter<DateViewHolder, C
 
         holder.textMiddle.setText(DateFormat.format(config.getFormatMiddleText(), day));
         holder.textMiddle.setTextSize(TypedValue.COMPLEX_UNIT_SP, config.getSizeMiddleText());
+        holder.textMiddle.setTypeface(config.getFontMiddleText());
 
         if (config.isShowTopText()) {
             holder.textTop.setText(DateFormat.format(config.getFormatTopText(), day));
             holder.textTop.setTextSize(TypedValue.COMPLEX_UNIT_SP, config.getSizeTopText());
+            holder.textTop.setTypeface(config.getFontTopText());
         } else {
             holder.textTop.setVisibility(View.GONE);
         }
@@ -60,6 +63,7 @@ public class DaysAdapter extends HorizontalCalendarBaseAdapter<DateViewHolder, C
         if (config.isShowBottomText()) {
             holder.textBottom.setText(DateFormat.format(config.getFormatBottomText(), day));
             holder.textBottom.setTextSize(TypedValue.COMPLEX_UNIT_SP, config.getSizeBottomText());
+            holder.textBottom.setTypeface(config.getFontBottomText());
         } else {
             holder.textBottom.setVisibility(View.GONE);
         }

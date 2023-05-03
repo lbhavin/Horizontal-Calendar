@@ -78,7 +78,7 @@ public final class HorizontalCalendar {
         calendarView.applyConfigFromLayout(this);
 
         HorizontalSnapHelper snapHelper = new HorizontalSnapHelper();
-        snapHelper.attachToHorizontalCalendar(this);
+//        snapHelper.attachToHorizontalCalendar(this);
 
         if (disablePredicate == null) {
             disablePredicate = defaultDisablePredicate;
@@ -95,13 +95,13 @@ public final class HorizontalCalendar {
         calendarView.setAdapter(mCalendarAdapter);
         calendarView.setLayoutManager(new HorizontalLayoutManager(calendarView.getContext(), false));
         calendarView.addOnScrollListener(new HorizontalCalendarScrollListener());
-
-        post(new Runnable() {
-            @Override
-            public void run() {
-                centerToPositionWithNoAnimation(positionOfDate(defaultSelectedDate));
-            }
-        });
+        mCalendarAdapter.setSelectedPosition(positionOfDate(defaultSelectedDate));
+//        post(new Runnable() {
+//            @Override
+//            public void run() {
+//                centerToPositionWithNoAnimation(positionOfDate(defaultSelectedDate));
+//            }
+//        });
 
     }
 
@@ -132,8 +132,10 @@ public final class HorizontalCalendar {
      */
     public void selectDate(Calendar date, boolean immediate) {
         int datePosition = positionOfDate(date);
+        mCalendarAdapter.setSelectedPosition(datePosition);
         if (immediate) {
-            centerToPositionWithNoAnimation(datePosition);
+//            centerToPositionWithNoAnimation(datePosition);
+            mCalendarAdapter.notifyDataSetChanged();
             if (calendarListener != null) {
                 calendarListener.onDateSelected(date, datePosition);
             }
@@ -448,7 +450,7 @@ public final class HorizontalCalendar {
         @Override
         public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
             //On Scroll, agenda is refresh to update background colors
-            post(selectedItemRefresher);
+//            post(selectedItemRefresher);
 
             if (calendarListener != null) {
                 calendarListener.onCalendarScroll(calendarView, dx, dy);

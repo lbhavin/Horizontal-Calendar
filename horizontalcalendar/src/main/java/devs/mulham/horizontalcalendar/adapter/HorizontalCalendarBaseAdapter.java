@@ -35,7 +35,7 @@ public abstract class HorizontalCalendarBaseAdapter<VH extends DateViewHolder, T
     private final CalendarEventsPredicate eventsPredicate;
     private final int cellWidth;
     private CalendarItemStyle disabledItemStyle;
-
+    private int selectedPosition = 0;
     protected Calendar startDate;
     protected int itemsCount;
 
@@ -110,7 +110,7 @@ public abstract class HorizontalCalendarBaseAdapter<VH extends DateViewHolder, T
     }
 
     protected void applyStyle(VH viewHolder, Calendar date, int position) {
-        int selectedItemPosition = horizontalCalendar.getSelectedDatePosition();
+//        int selectedItemPosition = horizontalCalendar.getSelectedDatePosition();
 
         if (disablePredicate != null) {
             boolean isDisabled = disablePredicate.test(date);
@@ -123,14 +123,14 @@ public abstract class HorizontalCalendarBaseAdapter<VH extends DateViewHolder, T
         }
 
         // Selected Day
-        if (position == selectedItemPosition) {
+        if (position == selectedPosition) {
             applyStyle(viewHolder, horizontalCalendar.getSelectedItemStyle());
-            viewHolder.selectionView.setVisibility(View.VISIBLE);
+            viewHolder.selectionView.setVisibility((horizontalCalendar.getConfig().isShowBottomIndicator() ? View.VISIBLE :View.GONE));
         }
         // Unselected Days
         else {
             applyStyle(viewHolder, horizontalCalendar.getDefaultStyle());
-            viewHolder.selectionView.setVisibility(View.INVISIBLE);
+            viewHolder.selectionView.setVisibility((horizontalCalendar.getConfig().isShowBottomIndicator() ? View.INVISIBLE :View.GONE));
         }
     }
 
@@ -140,9 +140,9 @@ public abstract class HorizontalCalendarBaseAdapter<VH extends DateViewHolder, T
         viewHolder.textBottom.setTextColor(itemStyle.getColorBottomText());
 
         if (Build.VERSION.SDK_INT >= 16) {
-            viewHolder.itemView.setBackground(itemStyle.getBackground());
+            viewHolder.layoutContent.setBackground(itemStyle.getBackground());
         } else {
-            viewHolder.itemView.setBackgroundDrawable(itemStyle.getBackground());
+            viewHolder.layoutContent.setBackgroundDrawable(itemStyle.getBackground());
         }
     }
 
@@ -171,6 +171,14 @@ public abstract class HorizontalCalendarBaseAdapter<VH extends DateViewHolder, T
 
             horizontalCalendar.getCalendarView().setSmoothScrollSpeed(HorizontalLayoutManager.SPEED_SLOW);
             horizontalCalendar.centerCalendarToPosition(position);
+            HorizontalCalendarListener calendarListener = horizontalCalendar.getCalendarListener();
+            if (calendarListener == null) {
+                return;
+            }
+
+            Calendar date = getItem(position);
+//            calendarListener.onDateSelected(date, position);
+            horizontalCalendar.selectDate(date,true);
         }
     }
 
@@ -193,5 +201,13 @@ public abstract class HorizontalCalendarBaseAdapter<VH extends DateViewHolder, T
 
             return calendarListener.onDateLongClicked(date, position);
         }
+    }
+
+    public int getSelectedPosition() {
+        return selectedPosition;
+    }
+
+    public void setSelectedPosition(int selectedPosition) {
+        this.selectedPosition = selectedPosition;
     }
 }

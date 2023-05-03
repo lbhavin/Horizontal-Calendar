@@ -3,6 +3,7 @@ package devs.mulham.horizontalcalendar;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
@@ -50,7 +51,22 @@ public class HorizontalCalendarView extends RecyclerView {
             int colorMiddleTextSelected = a.getColor(R.styleable.HorizontalCalendarView_colorMiddleTextSelected, textColorSelected);
             int colorBottomTextSelected = a.getColor(R.styleable.HorizontalCalendarView_colorBottomTextSelected, textColorSelected);
             Drawable selectedDateBackground = a.getDrawable(R.styleable.HorizontalCalendarView_selectedDateBackground);
-
+            Drawable dateBackground = a.getDrawable(R.styleable.HorizontalCalendarView_dateBackground);
+            String topTextFont = a.getString(R.styleable.HorizontalCalendarView_fontTopText);
+            String middleTextFont = a.getString(R.styleable.HorizontalCalendarView_fontMiddleText);
+            String bottomTextFont = a.getString(R.styleable.HorizontalCalendarView_fontBottomText);
+            Typeface topTextTypeFace = null;
+            Typeface middleTextTypeFace = null;
+            Typeface bottomTextTypeFace = null;
+            if (topTextFont != null) {
+                topTextTypeFace = Typeface.createFromAsset(getContext().getAssets(), topTextFont);
+            }
+            if (middleTextFont != null) {
+                middleTextTypeFace = Typeface.createFromAsset(getContext().getAssets(), middleTextFont);
+            }
+            if (bottomTextFont != null) {
+                bottomTextTypeFace = Typeface.createFromAsset(getContext().getAssets(), bottomTextFont);
+            }
             int selectorColor = a.getColor(R.styleable.HorizontalCalendarView_selectorColor, fetchAccentColor());
             float sizeTopText = getRawSizeValue(a, R.styleable.HorizontalCalendarView_sizeTopText,
                     HorizontalCalendarConfig.DEFAULT_SIZE_TEXT_TOP);
@@ -60,9 +76,9 @@ public class HorizontalCalendarView extends RecyclerView {
                     HorizontalCalendarConfig.DEFAULT_SIZE_TEXT_BOTTOM);
 
 
-            defaultStyle = new CalendarItemStyle(colorTopText, colorMiddleText, colorBottomText, null);
+            defaultStyle = new CalendarItemStyle(colorTopText, colorMiddleText, colorBottomText, dateBackground);
             selectedItemStyle = new CalendarItemStyle(colorTopTextSelected, colorMiddleTextSelected, colorBottomTextSelected, selectedDateBackground);
-            config = new HorizontalCalendarConfig(sizeTopText, sizeMiddleText, sizeBottomText, selectorColor);
+            config = new HorizontalCalendarConfig(sizeTopText, sizeMiddleText, sizeBottomText,topTextTypeFace,middleTextTypeFace,bottomTextTypeFace, selectorColor);
 
         } finally {
             a.recycle();
@@ -132,7 +148,6 @@ public class HorizontalCalendarView extends RecyclerView {
         horizontalCalendar.getConfig().setupDefaultValues(config);
         horizontalCalendar.getDefaultStyle().setupDefaultValues(defaultStyle);
         horizontalCalendar.getSelectedItemStyle().setupDefaultValues(selectedItemStyle);
-
         // clean, not needed anymore
         config = null;
         defaultStyle = null;

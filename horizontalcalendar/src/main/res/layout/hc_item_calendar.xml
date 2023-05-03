@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/hc_layoutMain"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
+    android:padding="4dp"
     android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/hc_layoutContent"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?selectableItemBackground"
-        android:layout_marginBottom="5dp"
         android:gravity="center"
+        android:padding="2dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/hc_selector"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,16 +25,15 @@
             android:id="@+id/hc_text_top"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
             tools:text="Jan" />
 
         <TextView
             android:id="@+id/hc_text_middle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:layout_marginBottom="2dp"
             android:textStyle="bold"
             tools:text="2" />
 
@@ -40,8 +41,7 @@
             android:id="@+id/hc_text_bottom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:layout_marginBottom="2dp"
             tools:text="Mon" />
 
 
@@ -50,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="4dp"
+            android:layout_marginBottom="2dp"
             android:gravity="center_horizontal" />
 
     </LinearLayout>

@@ -1,5 +1,6 @@
 package devs.mulham.horizontalcalendar;
 
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 
 import devs.mulham.horizontalcalendar.model.CalendarItemStyle;
@@ -21,12 +22,17 @@ public class ConfigBuilder {
     private String formatBottomText;
     private boolean showTopText = true;
     private boolean showBottomText = true;
+    private boolean showBottomIndicator = true;
 
+    private Typeface fontTopText;
+    private Typeface fontMiddleText;
+    private Typeface fontBottomText;
     /* Colors and Background*/
     private int colorTextTop, colorTextTopSelected;
     private int colorTextMiddle, colorTextMiddleSelected;
     private int colorTextBottom, colorTextBottomSelected;
     private Drawable selectedItemBackground;
+    private Drawable itemBackground;
 
     private final HorizontalCalendar.Builder calendarBuilder;
 
@@ -78,6 +84,35 @@ public class ConfigBuilder {
         this.sizeBottomText = size;
         return this;
     }
+ /**
+     * Set the font of the top label in scale-independent pixels
+     *
+     * @param typeface the Top text size, in SP
+     */
+    public ConfigBuilder fontTopText(Typeface typeface) {
+        this.fontTopText = typeface;
+        return this;
+    }
+
+    /**
+     * Set the font of the middle label in scale-independent pixels
+     *
+     * @param typeface the Middle text size, in SP
+     */
+    public ConfigBuilder fontMiddleText(Typeface typeface) {
+        this.fontMiddleText = typeface;
+        return this;
+    }
+
+    /**
+     * Set the tfont of the bottom label in scale-independent pixels
+     *
+     * @param typeface the Bottom text size, in SP
+     */
+    public ConfigBuilder fontBottomText(Typeface typeface) {
+        this.fontBottomText = typeface;
+        return this;
+    }
 
     public ConfigBuilder selectorColor(Integer selectorColor) {
         this.selectorColor = selectorColor;
@@ -106,6 +141,11 @@ public class ConfigBuilder {
 
     public ConfigBuilder showBottomText(boolean value) {
         this.showBottomText = value;
+        return this;
+    }
+
+    public ConfigBuilder showBottomIndicator(boolean value) {
+        this.showBottomIndicator = value;
         return this;
     }
 
@@ -143,6 +183,11 @@ public class ConfigBuilder {
         return this;
     }
 
+    public ConfigBuilder dateBackground(Drawable background) {
+        this.itemBackground = background;
+        return this;
+    }
+
     public HorizontalCalendar.Builder end() {
         if (formatMiddleText == null) {
             formatMiddleText = HorizontalCalendarConfig.DEFAULT_FORMAT_TEXT_MIDDLE;
@@ -157,18 +202,19 @@ public class ConfigBuilder {
     }
 
     HorizontalCalendarConfig createConfig() {
-        HorizontalCalendarConfig config = new HorizontalCalendarConfig(sizeTopText, sizeMiddleText, sizeBottomText, selectorColor);
+        HorizontalCalendarConfig config = new HorizontalCalendarConfig(sizeTopText, sizeMiddleText, sizeBottomText,fontTopText,fontMiddleText,fontBottomText, selectorColor);
         config.setFormatTopText(formatTopText);
         config.setFormatMiddleText(formatMiddleText);
         config.setFormatBottomText(formatBottomText);
         config.setShowTopText(showTopText);
         config.setShowBottomText(showBottomText);
+        config.setShowBottomIndicator(showBottomIndicator);
 
         return config;
     }
 
     CalendarItemStyle createDefaultStyle() {
-        return new CalendarItemStyle(colorTextTop, colorTextMiddle, colorTextBottom, null);
+        return new CalendarItemStyle(colorTextTop, colorTextMiddle, colorTextBottom, itemBackground);
     }
 
     CalendarItemStyle createSelectedItemStyle() {

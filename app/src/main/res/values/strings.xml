@@ -1,4 +1,15 @@
 <resources>
     <string name="app_name">HorizontalCalendarLibrary</string>
     <string name="action_settings">Settings</string>
+
+    <!--Font file name-->
+    <string name="font_roboto_slab_regular">fonts/RobotoSlab_Regular.ttf</string>
+    <string name="font_roboto_slab_light">RobotoSlab_Light.ttf</string>
+    <string name="font_roboto_slab_bold">RobotoSlab_Bold.ttf</string>
+    <string name="font_sourcesans_pro_regular">SourceSansPro_Regular.ttf</string>
+    <string name="font_sourcesans_pro_semibold">SourceSansPro_Semibold.ttf</string>
+    <string name="font_sourcesans_pro_light">SourceSansPro_Light.ttf</string>
+    <string name="font_sourcesans_pro_italic">SourceSansPro_Italic.ttf</string>
+    <string name="font_pacifico_regular">Pacifico_Regular.ttf</string>
+
 </resources>

@@ -33,7 +33,8 @@ public class MonthsAdapter extends HorizontalCalendarBaseAdapter<DateViewHolder,
     protected DateViewHolder createViewHolder(View itemView, int cellWidth) {
         final DateViewHolder holder = new DateViewHolder(itemView);
 
-        holder.layoutContent.setMinimumWidth(cellWidth);
+//        holder.layoutMain.setMinimumWidth(cellWidth);
+        holder.layoutMain.getLayoutParams().width = cellWidth;
         //holder.textTop.setVisibility(View.GONE);
 
         return holder;

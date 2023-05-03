@@ -1,5 +1,7 @@
 package devs.mulham.horizontalcalendar.model;
 
+import android.graphics.Typeface;
+
 /**
  * @author Mulham-Raee
  * @since v1.2.5
@@ -21,20 +23,35 @@ public class HorizontalCalendarConfig {
     private float sizeTopText;
     private float sizeMiddleText;
     private float sizeBottomText;
+    private Typeface fontTopText;
+    private Typeface fontMiddleText;
+    private Typeface fontBottomText;
 
     private Integer selectorColor;
     private boolean showTopText;
     private boolean showBottomText;
+    private boolean showBottomIndicator;
 
     public HorizontalCalendarConfig() {
     }
 
-    public HorizontalCalendarConfig(float sizeTopText, float sizeMiddleText, float sizeBottomText, Integer selectorColor) {
+    public HorizontalCalendarConfig(float sizeTopText, float sizeMiddleText, float sizeBottomText, Typeface fontTopText,
+            Typeface fontMiddleText, Typeface fontBottomText, Integer selectorColor) {
         this.sizeTopText = sizeTopText;
         this.sizeMiddleText = sizeMiddleText;
         this.sizeBottomText = sizeBottomText;
+        this.fontTopText = fontTopText;
+        this.fontMiddleText = fontMiddleText;
+        this.fontBottomText = fontBottomText;
         this.selectorColor = selectorColor;
     }
+
+//    public HorizontalCalendarConfig(float sizeTopText, float sizeMiddleText, float sizeBottomText, Integer selectorColor) {
+//        this.sizeTopText = sizeTopText;
+//        this.sizeMiddleText = sizeMiddleText;
+//        this.sizeBottomText = sizeBottomText;
+//        this.selectorColor = selectorColor;
+//    }
 
     public HorizontalCalendarConfig setFormatTopText(String formatTopText) {
         this.formatTopText = formatTopText;
@@ -66,6 +83,22 @@ public class HorizontalCalendarConfig {
         return this;
     }
 
+
+    public HorizontalCalendarConfig setFontTopText(Typeface fontTopText) {
+        this.fontTopText = fontTopText;
+        return this;
+    }
+
+    public HorizontalCalendarConfig setFontMiddleText(Typeface fontMiddleText) {
+        this.fontMiddleText = fontMiddleText;
+        return this;
+    }
+
+    public HorizontalCalendarConfig setFontBottomText(Typeface fontBottomText) {
+        this.fontBottomText = fontBottomText;
+        return this;
+    }
+
     public HorizontalCalendarConfig setSelectorColor(Integer selectorColor) {
         this.selectorColor = selectorColor;
         return this;
@@ -79,6 +112,10 @@ public class HorizontalCalendarConfig {
     public HorizontalCalendarConfig setShowBottomText(boolean showBottomText) {
         this.showBottomText = showBottomText;
         return this;
+    }
+
+    public void setShowBottomIndicator(boolean showBottomIndicator) {
+        this.showBottomIndicator = showBottomIndicator;
     }
 
     public String getFormatTopText() {
@@ -105,6 +142,18 @@ public class HorizontalCalendarConfig {
         return sizeBottomText;
     }
 
+    public Typeface getFontTopText() {
+        return fontTopText;
+    }
+
+    public Typeface getFontMiddleText() {
+        return fontMiddleText;
+    }
+
+    public Typeface getFontBottomText() {
+        return fontBottomText;
+    }
+
     public Integer getSelectorColor() {
         return selectorColor;
     }
@@ -117,6 +166,9 @@ public class HorizontalCalendarConfig {
         return showBottomText;
     }
 
+    public boolean isShowBottomIndicator() {
+        return showBottomIndicator;
+    }
     public void setupDefaultValues(HorizontalCalendarConfig defaultConfig) {
         if (defaultConfig == null) {
             return;
@@ -132,6 +184,15 @@ public class HorizontalCalendarConfig {
         }
         if (sizeBottomText == 0) {
             sizeBottomText = defaultConfig.sizeBottomText;
+        }
+        if (fontTopText == null) {
+            fontTopText = defaultConfig.fontTopText;
+        }
+        if (fontMiddleText == null) {
+            fontMiddleText = defaultConfig.fontMiddleText;
+        }
+        if (fontBottomText == null) {
+            fontBottomText = defaultConfig.fontBottomText;
         }
     }
 }

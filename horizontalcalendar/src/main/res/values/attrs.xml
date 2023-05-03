@@ -20,6 +20,15 @@
         <attr name="colorBottomTextSelected" format="color" />
         <!-- Selected item's background drawable -->
         <attr name="selectedDateBackground" format="reference" />
+        <!-- default item's background drawable -->
+        <attr name="dateBackground" format="reference" />
+
+        <!-- Default top text font -->
+        <attr name="fontTopText" format="string" />
+        <!-- Default middle text font -->
+        <attr name="fontMiddleText" format="string" />
+        <!-- Default bottom text font -->
+        <attr name="fontBottomText" format="string" />
 
         <!-- Background color for selector bar. -->
         <attr name="selectorColor" format="color" />

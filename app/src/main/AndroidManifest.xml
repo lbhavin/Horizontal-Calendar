@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="devs.mulham.raee.sample.MainActivity"
+            android:name="devs.mulham.raee.sample.MainActivityKt"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
