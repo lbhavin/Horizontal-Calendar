@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -434,7 +435,7 @@ public final class HorizontalCalendar {
 
         @Override
         public CalendarItemStyle style() {
-            return new CalendarItemStyle(Color.GRAY, null);
+            return new CalendarItemStyle(Color.GRAY, ContextCompat.getDrawable(calendarView.getContext(),R.drawable.disable_background));
         }
     };
 
