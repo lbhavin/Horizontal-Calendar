@@ -282,7 +282,8 @@ public final class HorizontalCalendar {
     }
 
     public int getShiftCells() {
-        return numberOfDatesOnScreen / 2;
+//        return numberOfDatesOnScreen / 2;
+        return 0;
     }
 
     /**
@@ -308,7 +309,7 @@ public final class HorizontalCalendar {
             }
         }
 
-        final int shiftCells = numberOfDatesOnScreen / 2;
+        final int shiftCells = 0;
         return position + shiftCells;
     }
 
